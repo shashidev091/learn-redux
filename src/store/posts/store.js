@@ -1,6 +1,9 @@
 import { createStore } from 'redux';
-import reducer from './reducer';
+import { configureStore } from '@reduxjs/toolkit';
+// import reducer from './reducer'
+import createReducer from './reducer';
 
-const postStore = createStore(reducer);
+// export const postStore = createStore(reducer);
 
-export default postStore;
+export const postStore = configureStore({ reducer: createReducer });
+

@@ -4,8 +4,9 @@ import { produce } from 'immer';
 import store from './store/bugs/store';
 import { BUG_RESOLVED } from './store/bugs/actionTypes';
 import { bugAdded, bugResolved } from './store/bugs/actions';
-import postStore  from './store/posts/store';
-import { ADD_POST, REMOVE_POST, UPDATED_POST, FETCHED_POST } from './store/posts/actionTypes';
+import { postStore } from './store/posts/store';
+import { ADD_POST, REMOVE_POST, FETCHED_POST } from './store/posts/actionTypes';
+import { addPost, removePost, updatePost } from './store/posts/actions';
 
 // let book = Map({ title: "Harry Potter" });
 let book = { title: "Harry Potter" };
@@ -69,22 +70,40 @@ postStore.dispatch({
     }
 });
 
-postStore.dispatch({
-    type: ADD_POST,
-    payload: {
+// postStore.dispatch();
+
+postStore.dispatch(addPost({
         id: 2,
         title: 'Second post',
         post: 'This is a test second post to learn redux once again.',
         isPublished: true
+    }))
+
+// postStore.dispatch({
+//     type: UPDATED_POST,
+//     payload: {
+//         id: 2,
+//         isPublished: false,
+//         title: '2nd post'
+//     }
+// });
+
+postStore.dispatch(updatePost({
+    id: 3,
+    isPublished: false,
+    title: '3rd post'
+}))
+
+postStore.dispatch({
+    type: ADD_POST,
+    payload: {
+        id: 3,
+        title: 'Third post',
+        post: 'This is a test third post to learn redux once again.',
+        isPublished: true
     }
 });
 
-postStore.dispatch({
-    type: UPDATED_POST,
-    payload: {
-        id: 2,
-        isPublished: false
-    }
-})
+postStore.dispatch(removePost({ id: 2 }))
 
 console.log(postStore.getState());

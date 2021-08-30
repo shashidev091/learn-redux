@@ -4,6 +4,7 @@
   "description": "Learning redux for better web development",
   "main": "index.js",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "immer": "^9.0.5",
     "immutable": "^4.0.0-rc.14",
     "redux": "^4.1.1"
