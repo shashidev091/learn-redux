@@ -17,7 +17,7 @@ let lastId = 0;
 //     return state;
 // }
 
-export default function reducer(state = [], action) {
+export default function bugReducer(state = [], action) {
     switch(action.type) {
         case BUG_ADDED:
             return [
