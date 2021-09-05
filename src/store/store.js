@@ -4,5 +4,5 @@ import logger from './middleware/logger'
 
 export default configureStore({
     reducer,
-    middleware: [...getDefaultMiddleware(), logger]
+    middleware: [...getDefaultMiddleware(), logger({apple: 'console'})]
 })
