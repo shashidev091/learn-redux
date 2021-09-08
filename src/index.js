@@ -1,9 +1,9 @@
-import { addUser, removeUser } from './store/users/reducers';
+import {addUser, removeUser} from './store/users/reducers';
 
 import rootStore from './store/store';
-import { bugAdded, bugResolved } from './store/bugs/actions';
-import { BUG_RESOLVED } from './store/bugs/actionTypes';
-import { addPost, removePost, updatePost, selectPublishedPosts } from './store/posts/postReducer';
+import {bugAdded, bugResolved} from './store/bugs/actions';
+import {BUG_RESOLVED} from './store/bugs/actionTypes';
+import {addPost, removePost, updatePost, selectPublishedPosts} from './store/posts/postReducer';
 
 rootStore.dispatch(bugAdded('big Bug'));
 
@@ -36,20 +36,20 @@ rootStore.dispatch({
 console.log(rootStore.getState());
 
 rootStore.dispatch(addPost({
-        id: 1,
-        title: 'First post',
-        post: 'This is a test post to learn redux once again.',
-        isPublished: true
+    id: 1,
+    title: 'First post',
+    post: 'This is a test post to learn redux once again.',
+    isPublished: true
 }));
 
 // postStore.dispatch();
 
 rootStore.dispatch(addPost({
-        id: 2,
-        title: 'Second post',
-        post: 'This is a test second post to learn redux once again.',
-        isPublished: true
-    }))
+    id: 2,
+    title: 'Second post',
+    post: 'This is a test second post to learn redux once again.',
+    isPublished: true
+}))
 
 // postStore.dispatch({
 //     type: UPDATED_POST,
@@ -61,10 +61,10 @@ rootStore.dispatch(addPost({
 // });
 
 rootStore.dispatch(addPost({
-        id: 3,
-        title: 'Third post',
-        post: 'This is a test third post to learn redux once again.',
-        isPublished: true
+    id: 3,
+    title: 'Third post',
+    post: 'This is a test third post to learn redux once again.',
+    isPublished: true
 }));
 
 rootStore.dispatch(updatePost({
@@ -73,7 +73,7 @@ rootStore.dispatch(updatePost({
     title: '3rd post'
 }))
 
-rootStore.dispatch(removePost({ id: 2 }));
+rootStore.dispatch(removePost({id: 2}));
 
 console.log(rootStore.getState());
 
@@ -101,3 +101,20 @@ console.log(rootStore.getState().rootReducer.auth)
 
 const publishedPosts = selectPublishedPosts(rootStore.getState());
 // console.log(publishedPosts)
+
+rootStore.dispatch((dispatch, getState) => {
+    dispatch(addUser({
+        firstName: 'Jhon',
+        lastName: 'Doe',
+        email: 'jhonDoe@mail.com'
+    }));
+
+    dispatch({
+        type: 'error',
+        payload: {
+            message: 'error is '
+        }
+    })
+})
+
+console.log(rootStore.getState().rootReducer.auth)
